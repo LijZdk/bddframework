@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -7,6 +8,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
 import java.io.File;
@@ -15,11 +17,14 @@ import java.util.concurrent.TimeUnit;
 
 public class GovLandingStepDefs {
 
-    public WebDriver driver;
+    public static WebDriver driver;
 
-    public GovLandingStepDefs(){
-
-        driver = Hooks.driver;
+    @Before
+    public void OpenBrowser()
+    {
+        System.out.println("Opening Browser");
+        driver = new ChromeDriver();
+        driver.manage().deleteAllCookies();
     }
 
     @Given("^I am on the \"([^\"]*)\" page on Url \"([^\"]*)\"$")
