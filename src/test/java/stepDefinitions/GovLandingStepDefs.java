@@ -29,34 +29,29 @@ public class GovLandingStepDefs {
 
     @Given("^I am on the \"([^\"]*)\" page on Url \"([^\"]*)\"$")
     public void iAmOnThePageOnUrl(String arg0, String arg1) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         driver.get("https://www.gov.uk/get-vehicle-information-from-dvla");
     }
 
 
     @And("^I see the \"([^\"]*)\" landing page$")
     public void ISeeTheLandingPage(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
        driver.getTitle().equals("Get vehicle information from DVLA - GOV.UK");
     }
 
     @Given("^I select \"([^\"]*)\" to proceed to next page$")
     public void iSelectToProceedToNextPage(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         driver.findElement(By.xpath("//*[@id=\"get-started\"]/a")).click();
 }
 
 
     @Then("^I see the \"([^\"]*)\" text box$")
     public void iSeeTheTextBox(String arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
         driver.findElement(By.xpath("//*[@id=\"Vrm\"]")).click();
     }
 
     @And("^I read from a excel spreadsheet to provide a registration number$")
     public void iReadFromAExcelSpreadsheetToProvideARegistrationNumber() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         FileInputStream file = new FileInputStream(new File("/Users/Elijah/Documents/bddframework/VehicleReg.xlsx"));
         XSSFWorkbook wb = new XSSFWorkbook(file);
         XSSFSheet sheet = wb.getSheetAt(0);
@@ -72,7 +67,6 @@ public class GovLandingStepDefs {
 
     @Then("^I take a screenshot$")
     public void iTakeAScreenshot() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         File scrFile = ((TakesScreenshot) driver)
                 .getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(scrFile, new File(
@@ -81,14 +75,12 @@ public class GovLandingStepDefs {
 
     @And("^Go back to enter another registration number$")
     public void goBackToEnterAnotherRegistrationNumber() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         driver.findElement(By.id("Correct_False")).click();
         driver.findElement(By.xpath("//*[@id=\"pr3\"]/div/button")).click();
     }
 
     @Then("^I read from a excel spreadsheet to provide a another registration number$")
     public void iReadFromAExcelSpreadsheetToProvideAAnotherRegistrationNumber() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         FileInputStream file = new FileInputStream(new File("/Users/Elijah/Documents/bddframework/VehicleReg.xlsx"));
         XSSFWorkbook wb = new XSSFWorkbook(file);
         XSSFSheet sheet = wb.getSheetAt(0);
@@ -104,7 +96,6 @@ public class GovLandingStepDefs {
 
     @Then("^I take another screenshot$")
     public void iTakeAnotherScreenshot() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         File scrFile = ((TakesScreenshot) driver)
                 .getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(scrFile, new File(
